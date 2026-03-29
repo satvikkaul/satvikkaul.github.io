@@ -363,7 +363,7 @@ section[id] {
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--accent);
-  font-size: 0.88rem;
+  font-size: 0.94rem;
 }
 
 .project-title-row {

@@ -38,25 +38,26 @@ window.siteData = {
   skillGroups: [
     {
       title: "Core Stack",
-      items: ["Python", "JavaScript", "Git", "APIs", "Data workflows"],
+      items: ["Python", "JavaScript", "C/C++", "Git", "FastAPI", "React"],
     },
     {
       title: "Machine Learning",
       items: [
         "PyTorch",
+        "TensorFlow",
         "Self-supervised learning",
         "Computer vision",
-        "Recommendation systems",
         "Model evaluation",
+        "Recommender systems",
       ],
     },
     {
-      title: "Application Development",
-      items: ["FastAPI", "React", "Vite", "Frontend development", "Backend systems"],
+      title: "Software Engineering",
+      items: ["REST APIs", "PostgreSQL", "MongoDB", "Docker", "GitHub Actions", "Deployment"],
     },
     {
       title: "Applied Areas",
-      items: ["Medical imaging", "Resume analysis", "Nutrition AI", "Full-stack apps"],
+      items: ["Medical imaging", "Resume analysis", "Nutrition AI", "Full-stack apps", "Product tools"],
     },
   ],
   contactLinks: [
