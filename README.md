@@ -1,45 +1,66 @@
 # Satvik Kaul Portfolio
 
-This is a static portfolio starter designed for the `satvikkaul.github.io` repository.
+Personal portfolio site for **satvikkaul.github.io**, built as a lightweight static site for GitHub Pages.
 
-## What is included
+The site highlights my work across **AI/ML, medical imaging, full-stack development, and product-oriented software projects**, with dedicated project case studies and a downloadable resume.
 
-- A one-page portfolio that works well on GitHub Pages
-- A responsive layout with custom styling and light motion
-- Curated project cards backed by live GitHub repository links
-- A lightweight resume companion page
-- Centralized portfolio content in the shared site data file
+## Live Site
 
-## Files
+- **Portfolio:** `https://satvikkaul.github.io/`
 
-- `index.html`: homepage entry point
-- `pages/resume.html`: resume companion page
-- `pages/case-study.html`: reusable case study page
-- `assets/css/styles.css`: shared styling
-- `assets/js/site-data.js`: shared profile, project, and link data
-- `assets/js/script.js`: homepage rendering logic
-- `assets/js/case-study.js`: case study page rendering logic
-- `assets/documents/satvik_kaul_resume.pdf`: downloadable PDF resume
-- `.nojekyll`: tells GitHub Pages to serve the site as plain static files
+## Pages
 
-## Quick customization
+- `index.html` — homepage with hero section, featured projects, and contact links
+- `pages/resume.html` — resume snapshot and downloadable PDF
+- `pages/case-study.html` — reusable project case study page rendered dynamically from shared data
 
-1. Open `assets/js/site-data.js`.
-2. Update the text in `siteData.profile`.
-3. Adjust the quick facts, skills, and featured project entries.
-4. Update `pages/resume.html` if you want a fuller resume snapshot.
-5. Optionally expand the case study layouts in `pages/case-study.html` and `assets/js/case-study.js`.
+## Project Structure
 
-## Publishing
+- `assets/css/styles.css` — shared site styling
+- `assets/js/site-data.js` — centralized profile, links, project data, and case study content
+- `assets/js/script.js` — homepage rendering logic
+- `assets/js/case-study.js` — case study rendering logic
+- `assets/documents/satvik_kaul_resume.pdf` — downloadable resume
+- `.nojekyll` — ensures GitHub Pages serves the site as plain static files
 
-1. Clone your empty repository locally, or connect this folder to it:
-   `https://github.com/satvikkaul/satvikkaul.github.io.git`
-2. Commit these files.
-3. Push to the default branch of `satvikkaul.github.io`.
-4. Your site will publish at `https://satvikkaul.github.io/`.
+## Features
 
-## Good next upgrades
+- Responsive static portfolio built for GitHub Pages
+- Centralized site content through a shared data file
+- Featured project cards linked to GitHub, demos, and case studies
+- Reusable case study page structure for deeper project write-ups
+- Resume companion page with direct PDF download
+- Lightweight styling and motion without heavy frameworks
 
-- Replace the existing PDF in `assets/documents/` when you update your resume
-- Add screenshots for each project
-- Add a custom domain later if you want stronger branding
+## Featured Work
+
+Current featured projects include:
+
+- **Smart Resume Analyzer**
+- **Self-Supervised Learning for Gleason Grading**
+- **NutriSnap AI Nutrition Assistant**
+- **Masked Auto Encoder for Gleason Grading**
+
+## Customization
+
+Most portfolio content is managed in:
+
+- `assets/js/site-data.js`
+
+Update this file to change:
+
+- profile text
+- hero content
+- featured project cards
+- external links
+- case study content
+- quick facts / skills / project metadata
+
+Use these files for layout-specific changes:
+
+- `index.html` — homepage structure
+- `pages/resume.html` — resume page structure
+- `pages/case-study.html` — case study page shell
+- `assets/css/styles.css` — design, spacing, typography, and responsive layout
+
+Thank you!
