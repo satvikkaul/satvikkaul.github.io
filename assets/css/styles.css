@@ -1109,3 +1109,242 @@ p {
     transition: none;
   }
 }
+
+/* ---------- ablation table ---------- */
+
+.bench {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.ablation {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.ablation caption {
+  caption-side: bottom;
+  margin-top: 0.9rem;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--steel);
+  text-align: left;
+}
+
+.ablation th {
+  padding: 0 0 0.55rem;
+  border-bottom: 2px solid var(--ink);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  text-align: right;
+}
+
+.ablation th:first-child,
+.ablation td:first-child {
+  text-align: left;
+}
+
+.ablation td {
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 0.94rem;
+  text-align: right;
+}
+
+.ablation .method {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.ablation .num {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.ablation tr.is-best .num,
+.ablation tr.is-best .method {
+  color: var(--red);
+}
+
+.ablation .best-mark {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+/* ---------- signal path ladder ---------- */
+
+.ladder {
+  background: var(--ink);
+  border-radius: 3px;
+  padding: 1.4rem;
+  box-shadow: var(--chassis-shadow);
+}
+
+.ladder-stage + .ladder-stage {
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.ladder-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ladder-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+.ladder-value {
+  font-family: var(--display);
+  font-size: 1.2rem;
+  color: var(--ivory-lit);
+}
+
+.ladder-value.is-hot {
+  color: var(--red);
+}
+
+.segments {
+  display: flex;
+  gap: 2px;
+  margin-top: 0.55rem;
+}
+
+.seg {
+  flex: 1;
+  height: 0.55rem;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.seg.is-lit {
+  background: var(--ivory-lit);
+}
+
+.seg.is-zone {
+  background: rgba(210, 59, 45, 0.22);
+}
+
+.seg.is-zone.is-lit {
+  background: var(--red);
+}
+
+.ladder-note {
+  margin-top: 0.4rem;
+  font-size: 0.58rem;
+  line-height: 1.45;
+  color: var(--steel);
+}
+
+/* ---------- threshold dial ---------- */
+
+.dial-block {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.dial {
+  flex: 0 0 auto;
+  width: 6.5rem;
+}
+
+.dial svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dial-copy h3 {
+  font-size: 1.2rem;
+  color: var(--ivory-lit);
+}
+
+.dial-copy p {
+  margin-top: 0.4rem;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: var(--steel);
+  max-width: 30ch;
+}
+
+/* ---------- engraved spec plates ---------- */
+
+.plates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+.plate {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.22rem 0.5rem;
+  border: 1px solid var(--rule-soft);
+  border-radius: 2px;
+  background: rgba(14, 14, 14, 0.03);
+}
+
+.plate-k {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+}
+
+.plate-v {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1040px) {
+  .bench {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .ladder {
+    padding: 1rem;
+  }
+
+  .dial-block {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .dial {
+    width: 5.5rem;
+  }
+}

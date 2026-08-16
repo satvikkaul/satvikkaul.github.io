@@ -87,6 +87,108 @@ function meterMarkup(metric) {
   `;
 }
 
+function ablationMarkup() {
+  const { columns, rows, caption } = data.ablation;
+  return `
+    <table class="ablation">
+      <caption>${esc(caption)}</caption>
+      <thead>
+        <tr>${columns.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr>
+      </thead>
+      <tbody>
+        ${rows
+          .map(
+            (row) => `
+          <tr${row.best ? ' class="is-best"' : ""}>
+            <td class="method">${esc(row.method)}${row.best ? '<span class="best-mark">best</span>' : ""}</td>
+            <td class="num">${esc(row.acc)}</td>
+            <td class="num">${esc(row.kappa)}</td>
+          </tr>`,
+          )
+          .join("")}
+      </tbody>
+    </table>
+    <div class="plates">${(data.ablation.plates || [])
+      .map(
+        (p) =>
+          `<span class="plate"><span class="plate-k">${esc(p.k)}</span><span class="plate-v">${esc(p.v)}</span></span>`,
+      )
+      .join("")}</div>
+  `;
+}
+
+/* Twenty segments lit in proportion. The last five are the red zone, drawn faint
+   when unlit and solid when reached — the ladder's version of the arc past 0 VU,
+   fixed to the scale rather than to the value. */
+const RED_ZONE = 15;
+
+function segments(level) {
+  const lit = Math.round(level * 20);
+  return `<div class="segments" aria-hidden="true">${Array.from({ length: 20 })
+    .map((_, i) => {
+      const cls = ["seg"];
+      if (i >= RED_ZONE) cls.push("is-zone");
+      if (i < lit) cls.push("is-lit");
+      return `<span class="${cls.join(" ")}"></span>`;
+    })
+    .join("")}</div>`;
+}
+
+/* The threshold dial: a real control carrying a real number. */
+function dialMarkup(threshold) {
+  const value = Number(threshold.value);
+  const angle = -130 + value * 260;
+  const ticks = Array.from({ length: 11 })
+    .map((_, i) => {
+      const a = ((-130 + i * 26 - 90) * Math.PI) / 180;
+      const hot = i >= 9;
+      return `<line x1="${(50 + 40 * Math.cos(a)).toFixed(1)}" y1="${(50 + 40 * Math.sin(a)).toFixed(1)}" x2="${(50 + 45 * Math.cos(a)).toFixed(1)}" y2="${(50 + 45 * Math.sin(a)).toFixed(1)}" stroke="${hot ? "#d23b2d" : "#7a7f84"}" stroke-width="2" />`;
+    })
+    .join("");
+
+  return `
+    <div class="dial">
+      <svg viewBox="0 0 100 100" role="img" aria-label="Precision threshold set to ${esc(threshold.value)}">
+        ${ticks}
+        <circle cx="50" cy="50" r="30" fill="#2b2b2b" stroke="#0e0e0e" stroke-width="2" />
+        <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1" />
+        <line x1="50" y1="50" x2="50" y2="24" stroke="#fbf6e8" stroke-width="2.5" stroke-linecap="round"
+              transform="rotate(${angle.toFixed(1)} 50 50)" />
+      </svg>
+    </div>
+  `;
+}
+
+function signalPathMarkup() {
+  const { stages, threshold } = data.signalPath;
+  const rows = stages
+    .map(
+      (stage) => `
+      <div class="ladder-stage">
+        <div class="ladder-head">
+          <span class="ladder-label">${esc(stage.label)}</span>
+          <span class="ladder-value${stage.hot ? " is-hot" : ""}">${esc(stage.value)}</span>
+        </div>
+        ${segments(stage.level)}
+        <p class="ladder-note">${esc(stage.note)}</p>
+      </div>`,
+    )
+    .join("");
+
+  return `
+    <div class="ladder lean">
+      ${rows}
+      <div class="dial-block">
+        ${dialMarkup(threshold)}
+        <div class="dial-copy">
+          <h3>${esc(threshold.value)} ${esc(threshold.label)}</h3>
+          <p>${esc(threshold.note)}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function channelMarkup(project, index) {
   const readouts = (data.readouts && data.readouts[project.slug]) || [];
   const rows = readouts.length
@@ -124,6 +226,16 @@ function channelMarkup(project, index) {
     badge = `<span class="tag">No metrics published</span>`;
   }
 
+  const plateRows = (data.plates && data.plates[project.slug]) || [];
+  const plates = plateRows.length
+    ? `<div class="plates">${plateRows
+        .map(
+          (p) =>
+            `<span class="plate"><span class="plate-k">${esc(p.k)}</span><span class="plate-v">${esc(p.v)}</span></span>`,
+        )
+        .join("")}</div>`
+    : "";
+
   return `
     <article class="channel lean">
       <div class="channel-no">${String(index + 1).padStart(2, "0")}</div>
@@ -134,6 +246,7 @@ function channelMarkup(project, index) {
         </div>
         <p class="channel-desc">${esc(project.cardDescription)}</p>
         <p class="channel-stack">${esc(project.stack)}</p>
+        ${plates}
         <div class="channel-links">${links.join("")}</div>
       </div>
       <div class="channel-readout">${rows}</div>
@@ -178,6 +291,12 @@ function render() {
       )
       .join("");
   }
+
+  const ablation = document.querySelector("[data-ablation]");
+  if (ablation) ablation.innerHTML = ablationMarkup();
+
+  const signalPath = document.querySelector("[data-signal-path]");
+  if (signalPath) signalPath.innerHTML = signalPathMarkup();
 
   const channels = document.querySelector("[data-channels]");
   if (channels) channels.innerHTML = data.featuredRepositories.map(channelMarkup).join("");

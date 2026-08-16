@@ -106,6 +106,87 @@ window.siteData = {
     { key: "Research", value: "Conference shortlist, manuscript in preparation" },
     { key: "Location", value: "Toronto, ON, Canada" },
   ],
+  // Every row here is a measured result, not an estimate. MoCo v2 is deliberately
+  // absent: it is in progress and has no number yet.
+  ablation: {
+    columns: ["Method", "Accuracy", "Cohen's kappa"],
+    rows: [
+      { method: "Supervised baseline", acc: "47.6%", kappa: "0.341" },
+      { method: "CAE (autoencoder SSL)", acc: "62.8%", kappa: "0.500", best: true },
+      { method: "SimCLR", acc: "37.6%", kappa: "0.067" },
+    ],
+    caption:
+      "SICAPv2, patch-level four-class Gleason grading, tracked under cross-fold validation. MoCo v2 is in progress and is left out until it has a number. Shortlisted for a conference, manuscript in preparation.",
+    plates: [
+      { k: "Dataset", v: "SICAPv2" },
+      { k: "Task", v: "4-class, patch-level" },
+      { k: "Validation", v: "Cross-fold" },
+      { k: "Eval", v: "Linear probe + fine-tune" },
+      { k: "Backbone", v: "Shared encoder" },
+      { k: "Status", v: "Conference shortlist" },
+    ],
+  },
+  // The Ampere document pipeline. `level` is the share of the previous stage that
+  // survives to this one, which is what the segmented ladder lights.
+  signalPath: {
+    stages: [
+      { label: "Documents in", value: "250+", level: 1, note: "Aviation documents through the pipeline." },
+      {
+        label: "First-pass structured fields",
+        value: "88%",
+        level: 0.88,
+        hot: true,
+        note: "Extracted correctly on the first pass, no human touch.",
+      },
+      {
+        label: "Auto-decided",
+        value: "~60%",
+        level: 0.6,
+        note: "Cleared the precision threshold and skipped review entirely.",
+      },
+      {
+        label: "Routed to human review",
+        value: "~40%",
+        level: 0.4,
+        note: "Held back deliberately. The uncertain cases are the point of the threshold.",
+      },
+    ],
+    threshold: {
+      value: "0.97",
+      label: "Precision threshold",
+      note: "Set high on purpose. A wrong auto-decision costs more than a human glance, so the classifier only acts when it is nearly certain.",
+    },
+  },
+  // Engraved plates: dataset, architecture, and scale facts an ML reader scans for.
+  plates: {
+    "ssl-prostate-cancer-grading": [
+      { k: "Dataset", v: "SICAPv2" },
+      { k: "Task", v: "4-class, patch-level" },
+      { k: "Pretext", v: "CAE / SimCLR / MoCo v2" },
+      { k: "Eval", v: "Linear probe + fine-tune" },
+    ],
+    "mae-for-gleason-grading": [
+      { k: "Dataset", v: "SICAPv2" },
+      { k: "Backbone", v: "ViT" },
+      { k: "Pretext", v: "Masked autoencoder" },
+      { k: "Metrics", v: "QWK / Macro-F1" },
+    ],
+    "recipe-recommender-system": [
+      { k: "Interactions", v: "1.1M" },
+      { k: "Vision", v: "EfficientNet-B2" },
+      { k: "Retrieval", v: "Two-tower + GRU" },
+      { k: "Serving", v: "<300ms e2e" },
+    ],
+    "secure-pathology-dashboard": [
+      { k: "Stack", v: "FastAPI + React" },
+      { k: "Isolation", v: "Per-user" },
+      { k: "Compliance", v: "HIPAA / PHIPA" },
+    ],
+    "smart-resume-analyzer": [
+      { k: "Approach", v: "Rule-based NLP" },
+      { k: "Serving", v: "FastAPI + Vite" },
+    ],
+  },
   // Per-project readout, keyed by slug. Only real, published numbers belong here;
   // a project without them gets an honest note instead of an invented figure.
   readouts: {
@@ -119,7 +200,7 @@ window.siteData = {
     ],
     "ssl-prostate-cancer-grading": [
       { key: "CAE accuracy", value: "62.8%", hot: true },
-      { key: "Cohen's κ", value: "0.500", hot: true },
+      { key: "Cohen's kappa", value: "0.500", hot: true },
       { key: "Baseline", value: "47.6% / 0.341" },
     ],
     "recipe-recommender-system": [

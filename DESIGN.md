@@ -22,6 +22,9 @@ colors:
   seam-control: "rgba(255, 255, 255, 0.22)"
   glass-sheen: "rgba(255, 255, 255, 0.42)"
   bezel-shadow: "rgba(0, 0, 0, 0.6)"
+  red-zone-unlit: "rgba(210, 59, 45, 0.22)"
+  plate-wash: "rgba(14, 14, 14, 0.03)"
+  knob-rim: "rgba(255, 255, 255, 0.14)"
 typography:
   display:
     fontFamily: "Anton, Arial Narrow, sans-serif"
@@ -164,6 +167,15 @@ components:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.meter-ivory-lit}"
     padding: "0.4rem 0.5rem 0.5rem"
+  plate:
+    backgroundColor: "rgba(14, 14, 14, 0.03)"
+    textColor: "{colors.steel-charcoal}"
+    rounded: "{rounded.panel}"
+    padding: "0.22rem 0.5rem"
+  segment-zone:
+    backgroundColor: "rgba(210, 59, 45, 0.22)"
+  segment-lit:
+    backgroundColor: "{colors.meter-ivory-lit}"
   chassis:
     backgroundColor: "{colors.walnut}"
     rounded: "{rounded.frame}"
@@ -405,6 +417,36 @@ Charcoal block containing a 1px-gapped grid of cells, the gaps showing ivory at 
 so the grid reads as machined seams. Each cell holds a heading and a set of
 **jacks**: hairline-bordered steel-bordered chips at 0.64rem.
 
+### Ablation Table
+
+The ML-native component: a ruled results table where the winning row turns peak
+red and carries a `best` mark. Header cells sit on the system's 2px ink rule;
+rows divide on soft hairlines. Numbers are set in Anton at 1.2rem with tabular
+figures, methods in Archivo 600. The caption sits below the table in steel and
+names what the numbers are not — the run still in progress is excluded, not
+estimated.
+
+### Signal Ladder
+
+An ink chassis of stages, each a label/value head over twenty segments. The last
+five segments are the **red zone**: drawn at 22% red when unlit and solid peak red
+when the value reaches them. The zone is fixed to the scale, never to the value —
+this is the ladder's version of the arc past 0 VU, and it is what makes two stages
+comparable at a glance.
+
+### Threshold Dial
+
+A real control carrying a real number. Charcoal knob on an 11-tick arc spanning
+260°, the top two ticks in peak red, with an ivory pointer at the recorded value.
+It is not decorative: the angle is computed from the threshold it displays.
+
+### Spec Plates
+
+Engraved key/value chips on a 3%-ink wash with a soft hairline: a steel uppercase
+key at 0.58rem beside a charcoal value at 0.68rem with tabular figures. They carry
+dataset, architecture, and scale facts — the vocabulary an ML reader scans for
+before reading a sentence.
+
 ### Rail
 
 Sticky ivory bar on a hairline. Name in Anton beside a red tracked role label.
@@ -434,6 +476,9 @@ past 90% of one viewport — it does not exist until there is a top to return to
   and badge it to match. The badge may never claim more than the readout shows.
 - **Do** extend the `prefers-reduced-motion` block whenever motion is added; the
   needle sweep and the section lean are both already disabled there.
+
+- **Do** keep the ladder's red zone fixed to the last five segments. It marks the
+  scale, not the value, which is what makes two stages comparable.
 
 ### Don't:
 
