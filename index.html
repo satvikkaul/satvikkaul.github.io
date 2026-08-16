@@ -5,110 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Satvik Kaul's portfolio: AI/ML, software engineering, and product-focused projects."
+      content="Satvik Kaul: machine learning and AI engineer building production Generative AI systems, and researching self-supervised learning for medical imaging."
     />
-    <title>Satvik Kaul | Portfolio</title>
+    <title>Satvik Kaul | ML &amp; AI Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
-    <script defer src="assets/js/site-data.js"></script>
-    <script defer src="assets/js/script.js"></script>
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="Go to top">
-          <span class="brand-mark">SK</span>
-          <span class="brand-copy">Satvik Kaul</span>
+    <!--
+    THESIS: A portfolio read as a VU meter bridge — identical instruments shoulder to
+    shoulder, so the visitor reads the whole row at once and sees which number leans past
+    zero. It refuses the two arrangements this category always ships: near-black with a
+    neon accent, and warm cream with a serif display.
+    OWN-WORLD: Meter ivory ground, ink and charcoal chassis panels, walnut frame, brushed
+    steel labels, peak red used only past zero. Heavy condensed gothic display over a
+    workhorse grotesque; hairline rules divide every region; nothing is rounded past 4px.
+    STORY: A recruiter sees measured work, not claims; a hiring manager finds the baseline
+    each number was measured against; both reach the resume or the repo in one move.
+    FIRST VIEWPORT: Left, a condensed headline stating nothing ships unmeasured, with lede,
+    two actions and a stack spec line. Right, the bridge: six meters in a walnut chassis,
+    needles at true angles, only the CAE result past zero into red.
+    FORM: VU-meter bridge across a recording desk; challenger card, chosen over the
+    assigned direction; seed key 33213d0a.
+    FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+    -->
+    <header class="rail">
+      <div class="shell rail-inner">
+        <a class="mark" href="#top">
+          <span class="mark-name" data-name>Satvik Kaul</span>
+          <span class="mark-sub" data-role-short>ML &amp; AI Engineer</span>
         </a>
-        <nav class="site-nav" aria-label="Primary">
+        <nav class="rail-nav" aria-label="Primary">
+          <a href="#work">Work</a>
+          <a href="#experience">Experience</a>
+          <a href="#stack">Stack</a>
+          <a href="#specs">Specs</a>
           <a href="pages/resume.html">Resume</a>
-          <a href="#work">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#top">About</a>
           <a href="#contact">Contact</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <main id="top">
-        <section class="hero section">
-          <div class="hero-copy reveal">
-            <p class="eyebrow" data-school></p>
-            <h1 data-name>Satvik Kaul</h1>
-            <p class="hero-role" data-role></p>
-            <p class="hero-lede" data-value-prop></p>
-            <p class="hero-body" data-summary></p>
-            <div class="hero-actions">
-              <a class="button button-primary" data-resume-link href="pages/resume.html">
-                Resume
-              </a>
-              <a
-                class="button button-secondary"
-                data-github-link
-                href="https://github.com/satvikkaul"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub
-              </a>
-              <a class="button button-secondary" href="#contact">Contact</a>
+    <main id="top">
+      <section class="shell hero">
+        <div>
+          <h1 data-headline></h1>
+          <p class="hero-lede" data-lede></p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#work">See the work</a>
+            <a class="btn btn-ghost" href="pages/resume.html">Read the resume</a>
+          </div>
+          <p class="hero-spec" data-spec></p>
+        </div>
+        <div class="bridge lean" aria-labelledby="bridge-caption">
+          <div class="bridge-well">
+            <div class="bridge-row" data-bridge></div>
+            <div class="bridge-plate">
+              <span id="bridge-caption">Measured results &middot; 6 channels</span>
+              <span>0 VU = baseline</span>
             </div>
           </div>
+        </div>
+      </section>
 
-          <aside class="hero-panel reveal">
-            <p class="panel-label">CURRENT FOCUS</p>
-            <div class="facts-list" data-fact-list></div>
-          </aside>
-        </section>
+      <section class="band">
+        <div class="shell band-grid" data-band></div>
+      </section>
 
-        <!--
-        <section class="section split-section" id="about">
-          <div class="section-heading reveal">
-            <p class="eyebrow">ABOUT</p>
-            <h2>Research-minded engineering, built for real use.</h2>
-          </div>
-          <div class="section-body reveal" data-about-copy></div>
-        </section>
-        -->
+      <section class="shell section" id="work">
+        <div class="section-head">
+          <h2>Selected work</h2>
+          <p>Each channel carries what it was measured against, or says plainly that it has not been.</p>
+        </div>
+        <div class="channels" data-channels aria-live="polite"></div>
+      </section>
 
-        <section class="section" id="work">
-          <div class="section-heading reveal">
-            <p class="eyebrow">SELECTED WORK</p>
-            <h2>Featured projects.</h2>
-            <p class="section-note">
-              A selection of research and product-focused work, with links to
-              code, demos, and deeper project notes.
-            </p>
-          </div>
-          <div class="project-grid" data-project-grid aria-live="polite"></div>
-        </section>
+      <section class="shell section" id="experience">
+        <div class="section-head">
+          <h2>Sessions</h2>
+          <p>Where the systems above were built and who they were built for.</p>
+        </div>
+        <div data-sessions></div>
+      </section>
 
-        <section class="section" id="skills">
-          <div class="section-heading reveal">
-            <p class="eyebrow">TECHNOLOGIES</p>
-            <h2>Tools and methods I use.</h2>
-          </div>
-          <div class="skill-grid" data-skill-grid></div>
-        </section>
+      <section class="shell section" id="stack">
+        <div class="section-head">
+          <h2>Patch panel</h2>
+          <p>What is wired in, grouped the way it is actually used.</p>
+        </div>
+        <div class="panel lean" style="margin-top: 2rem">
+          <div class="panel-grid" data-panel></div>
+        </div>
+      </section>
 
-        <section class="section contact-section" id="contact">
-          <div class="contact-copy reveal">
-            <p class="eyebrow">CONTACT</p>
-            <h2>Get in touch.</h2>
+      <section class="shell section" id="specs">
+        <div class="section-head">
+          <h2>Tech specs</h2>
+          <p>Education and credentials, stated once.</p>
+        </div>
+        <div class="specs" style="margin-top: 1.6rem" data-specs></div>
+      </section>
+
+      <section class="shell section" id="contact">
+        <div class="contact">
+          <div>
+            <h2>Open to full-time ML &amp; AI engineering roles.</h2>
             <p data-contact-copy></p>
           </div>
-          <div class="contact-actions reveal" data-contact-links></div>
-        </section>
-      </main>
+          <div class="contact-links" data-contact-links></div>
+        </div>
+      </section>
+    </main>
 
-      <footer class="site-footer">
-        <p>&copy; 2026 Satvik Kaul</p>
-      </footer>
-    </div>
-    <a class="floating-top-button" href="#top" aria-label="Back to top">↑</a>
+    <footer class="shell foot">
+      <span>Satvik Kaul &middot; Toronto, ON</span>
+      <span>Built as a static site &middot; &copy; 2026</span>
+    </footer>
+
+    <a class="to-top" href="#top" aria-label="Back to top">&uarr;</a>
+
+    <script src="assets/js/site-data.js"></script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>

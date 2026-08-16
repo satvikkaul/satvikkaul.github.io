@@ -1,188 +1,101 @@
-const siteData = window.siteData;
-const fallbackRepoRoot = "https://github.com/satvikkaul?tab=repositories";
+/* Case study page. The flow diagram is the only visual: a chain of chassis-dark
+   steps in the world's own grammar, one per stage the project actually has. */
 
-const elements = {
-  title: document.querySelector("[data-case-title]"),
-  badge: document.querySelector("[data-case-badge]"),
-  summary: document.querySelector("[data-case-summary]"),
-  stack: document.querySelector("[data-case-stack]"),
-  visual: document.querySelector("[data-case-visual]"),
-  detail: document.querySelector("[data-case-detail]"),
-};
+const data = window.siteData;
 
-function observeReveal() {
-  const revealItems = document.querySelectorAll(".reveal");
-
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.18,
-      rootMargin: "0px 0px -40px 0px",
-    },
+const esc = (value) =>
+  String(value).replace(
+    /[&<>"']/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
   );
 
-  revealItems.forEach((item) => observer.observe(item));
-}
+const slug = new URLSearchParams(window.location.search).get("project");
+const project = data.featuredRepositories.find((p) => p.slug === slug);
 
-function renderVisual(project) {
-  if (project.visualType === "mock-ui") {
-    return `
-      <div class="visual-card visual-ui">
-        <div class="visual-window-bar">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="visual-ui-grid">
-          <div class="visual-score">
-            <p>Match score</p>
-            <strong>87</strong>
-          </div>
-          <div class="visual-panel">
-            <p>Top suggestions</p>
-            <ul>
-              <li>Add stronger role-specific keywords</li>
-              <li>Tighten action verbs in experience bullets</li>
-              <li>Improve alignment with required skills</li>
-            </ul>
-          </div>
-          <div class="visual-panel">
-            <p>Tone check</p>
-            <span>Clear, direct, and role-aligned</span>
-          </div>
-        </div>
-      </div>
-    `;
+const set = (selector, value) => {
+  const el = document.querySelector(selector);
+  if (el) el.innerHTML = value;
+};
+
+if (!project) {
+  set("[data-title]", "Project not found");
+  set(
+    "[data-summary]",
+    'That case study does not exist. <a href="../index.html#work" style="border-bottom:1px solid currentColor">Browse all work</a>.',
+  );
+} else {
+  document.title = `${project.caseStudyTitle} | Satvik Kaul`;
+  set("[data-title]", esc(project.caseStudyTitle));
+  set("[data-summary]", esc(project.summary));
+  set("[data-stack]", esc(project.stack));
+
+  const links = [
+    `<a class="btn btn-solid" href="${data.profile.githubUrl}/${encodeURIComponent(project.name)}" target="_blank" rel="noreferrer">Source</a>`,
+  ];
+  if (project.demoUrl) {
+    links.push(
+      `<a class="btn btn-ghost" href="${esc(project.demoUrl)}" target="_blank" rel="noreferrer">Demo</a>`,
+    );
+  }
+  (project.extraLinks || []).forEach((link) => {
+    links.push(
+      `<a class="btn btn-ghost" href="${esc(link.href)}" target="_blank" rel="noreferrer">${esc(link.label)}</a>`,
+    );
+  });
+  set("[data-links]", links.join(""));
+
+  const steps = project.visualSteps || [];
+  if (steps.length) {
+    const chain = steps
+      .map(
+        (step, i) =>
+          `<div class="case-step">${esc(step)}</div>` +
+          (i < steps.length - 1 ? `<span class="case-arrow" aria-hidden="true">&rarr;</span>` : ""),
+      )
+      .join("");
+    set("[data-visual]", `<div class="case-flow">${chain}</div>`);
   }
 
-  return `
-    <div class="visual-card visual-flow">
-      <div class="flow-steps">
-        ${project.visualSteps
-          .map(
-            (step, index) => `
-              <div class="flow-step">
-                <span>${step}</span>
-              </div>
-              ${index < project.visualSteps.length - 1 ? '<div class="flow-arrow">></div>' : ""}
-            `,
-          )
-          .join("")}
-      </div>
-    </div>
-  `;
-}
+  const readouts = (data.readouts && data.readouts[project.slug]) || [];
+  if (readouts.length) {
+    const rows = readouts
+      .map(
+        (row) => `
+        <div class="readout-row">
+          <span class="readout-key">${esc(row.key)}</span>
+          <span class="readout-val${row.hot ? " is-hot" : ""}">${esc(row.value)}</span>
+        </div>`,
+      )
+      .join("");
+    set(
+      "[data-readout]",
+      `<div class="channel-readout" style="max-width:28rem">${rows}</div>`,
+    );
+  }
 
-function buildLinks(project) {
-  const links = [
-    `<a href="${project.repoUrl}" target="_blank" rel="noreferrer">GitHub</a>`,
+  const blocks = [
+    { title: "Overview", body: `<p>${esc(project.overview)}</p>` },
+    { title: "The problem", body: `<p>${esc(project.problem)}</p>` },
+    {
+      title: "What I built",
+      body: `<ul>${project.built.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>`,
+    },
+    { title: "Results", body: `<p>${esc(project.results)}</p>` },
   ];
 
-  if (project.demoUrl) {
-    links.push(`<a href="${project.demoUrl}" target="_blank" rel="noreferrer">Demo</a>`);
-  }
-
-  project.extraLinks.forEach((link) => {
-    links.push(`<a href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>`);
-  });
-
-  return links.join("");
+  set(
+    "[data-body]",
+    blocks
+      .map((block) => `<section class="case-block"><h3>${block.title}</h3>${block.body}</section>`)
+      .join(""),
+  );
 }
 
-function renderCaseStudy(project) {
-  elements.title.textContent = project.caseStudyTitle;
-  elements.summary.textContent = project.summary;
-  elements.stack.textContent = project.stack;
-
-  if (project.statusLabel) {
-    elements.badge.hidden = false;
-    elements.badge.textContent = project.statusLabel;
-  } else {
-    elements.badge.hidden = true;
-  }
-
-  elements.visual.innerHTML = renderVisual(project);
-
-  elements.detail.innerHTML = `
-    <div class="case-study-copy">
-      <div class="case-study-block">
-        <h4>Overview</h4>
-        <p>${project.overview}</p>
-      </div>
-      <div class="case-study-block">
-        <h4>Problem</h4>
-        <p>${project.problem}</p>
-      </div>
-      <div class="case-study-block">
-        <h4>What I built</h4>
-        <ul class="detail-highlights">
-          ${project.built.map((item) => `<li>${item}</li>`).join("")}
-        </ul>
-      </div>
-      <div class="case-study-block">
-        <h4>Results / Current status</h4>
-        <p>${project.results}</p>
-      </div>
-      <div class="project-links">${buildLinks(project)}</div>
-    </div>
-  `;
-
-  document.title = `${project.caseStudyTitle} | Satvik Kaul`;
+/* Same back-to-top rule as the homepage. */
+const topBtn = document.querySelector(".to-top");
+if (topBtn) {
+  const toggleTop = () =>
+    topBtn.classList.toggle("is-shown", window.scrollY > window.innerHeight * 0.9);
+  toggleTop();
+  window.addEventListener("scroll", toggleTop, { passive: true });
 }
-
-async function initCaseStudy() {
-  const params = new URLSearchParams(window.location.search);
-  const slug = params.get("project");
-  const project = siteData.featuredRepositories.find((item) => item.slug === slug);
-
-  if (!project) {
-    elements.title.textContent = "Case study not found";
-    elements.summary.textContent = "Return to the portfolio to choose a project.";
-    elements.stack.textContent = "";
-    elements.detail.innerHTML = `
-      <div class="project-links">
-        <a href="../index.html">Back to portfolio</a>
-      </div>
-    `;
-    observeReveal();
-    return;
-  }
-
-  try {
-    const repoResponse = await fetch(
-      `https://api.github.com/users/${siteData.profile.githubUsername}/repos?per_page=100&sort=updated`,
-    );
-
-    if (!repoResponse.ok) {
-      throw new Error("GitHub API request failed");
-    }
-
-    const repositories = await repoResponse.json();
-    const repositoryMap = new Map(repositories.map((repo) => [repo.name, repo]));
-    renderCaseStudy({
-      ...project,
-      repoUrl: repositoryMap.get(project.name)?.html_url || fallbackRepoRoot,
-    });
-  } catch (error) {
-    renderCaseStudy({
-      ...project,
-      repoUrl: fallbackRepoRoot,
-    });
-  }
-
-  observeReveal();
-}
-
-initCaseStudy();

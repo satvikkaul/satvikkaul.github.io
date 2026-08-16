@@ -3,57 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Project case study for Satvik Kaul's portfolio."
-    />
+    <meta name="description" content="Project case study from Satvik Kaul's portfolio." />
     <title>Case Study | Satvik Kaul</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/styles.css" />
-    <script defer src="../assets/js/site-data.js"></script>
-    <script defer src="../assets/js/case-study.js"></script>
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="../index.html" aria-label="Go to portfolio home">
-          <span class="brand-mark">SK</span>
-          <span class="brand-copy">Satvik Kaul</span>
+    <header class="rail">
+      <div class="shell rail-inner">
+        <a class="mark" href="../index.html">
+          <span class="mark-name">Satvik Kaul</span>
+          <span class="mark-sub">ML &amp; AI Engineer</span>
         </a>
-        <nav class="site-nav" aria-label="Primary">
+        <nav class="rail-nav" aria-label="Primary">
+          <a href="../index.html#work">Work</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../index.html#stack">Stack</a>
           <a href="resume.html">Resume</a>
-          <a href="../index.html#work">Projects</a>
-          <a href="../index.html#skills">Skills</a>
-          <a href="../index.html#top">About</a>
           <a href="../index.html#contact">Contact</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <main id="top">
-        <section class="section">
-          <div class="case-study-header reveal">
-            <p class="eyebrow" data-case-eyebrow>CASE STUDY</p>
-            <div class="project-heading-row">
-              <h2 data-case-title>Project title</h2>
-              <span class="status-badge" data-case-badge hidden></span>
-            </div>
-            <p class="hero-lede" data-case-summary></p>
-            <p class="project-stack" data-case-stack></p>
-          </div>
-          <div class="case-study-hero-visual reveal" data-case-visual></div>
-          <div class="project-detail-card reveal" data-case-detail></div>
-        </section>
-      </main>
+    <main class="shell" id="top">
+      <section class="doc-head">
+        <div>
+          <h1 data-title>Case study</h1>
+          <p class="prose" style="margin-top: 1.2rem" data-summary></p>
+          <p class="channel-stack" data-stack></p>
+        </div>
+        <div class="doc-actions" data-links></div>
+      </section>
 
-      <footer class="site-footer">
-        <p>&copy; 2026 Satvik Kaul</p>
-      </footer>
-    </div>
-    <a class="floating-top-button" href="#top" aria-label="Back to top">↑</a>
+      <div style="padding-block: 2rem" data-visual></div>
+
+      <div data-readout></div>
+
+      <div class="case-body" data-body></div>
+
+      <div style="padding-block: 3rem">
+        <a class="btn btn-ghost" href="../index.html#work">All work</a>
+      </div>
+    </main>
+
+    <footer class="shell foot">
+      <span><a href="../index.html">Back to portfolio</a></span>
+      <span>Satvik Kaul &middot; &copy; 2026</span>
+    </footer>
+
+    <a class="to-top" href="#top" aria-label="Back to top">&uarr;</a>
+
+    <script src="../assets/js/site-data.js"></script>
+    <script src="../assets/js/case-study.js"></script>
   </body>
 </html>

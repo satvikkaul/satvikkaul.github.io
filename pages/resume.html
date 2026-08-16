@@ -5,278 +5,281 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Resume snapshot for Satvik Kaul covering education, experience, research, technical skills, and selected projects."
+      content="Resume for Satvik Kaul: machine learning and AI engineer, production Generative AI at Ampere Digital and self-supervised learning research at TMU's Advanced AI Lab."
     />
     <title>Satvik Kaul | Resume</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/styles.css" />
   </head>
-  <body class="resume-page">
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="../index.html" aria-label="Go to portfolio home">
-          <span class="brand-mark">SK</span>
-          <span class="brand-copy">Satvik Kaul</span>
+  <body>
+    <header class="rail">
+      <div class="shell rail-inner">
+        <a class="mark" href="../index.html">
+          <span class="mark-name">Satvik Kaul</span>
+          <span class="mark-sub">ML &amp; AI Engineer</span>
         </a>
-        <nav class="site-nav" aria-label="Primary">
+        <nav class="rail-nav" aria-label="Primary">
+          <a href="../index.html#work">Work</a>
+          <a href="../index.html#experience">Experience</a>
+          <a href="../index.html#stack">Stack</a>
           <a href="resume.html">Resume</a>
-          <a href="../index.html#work">Projects</a>
-          <a href="../index.html#skills">Skills</a>
-          <a href="../index.html#top">About</a>
           <a href="../index.html#contact">Contact</a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <main class="resume-main" id="top">
-        <section class="resume-top section">
-          <div class="resume-top-copy">
-            <p class="eyebrow">RESUME</p>
-            <h1>Resume snapshot.</h1>
-            <p class="resume-subtext">
-              MSc Computer Science student focused on AI/ML, software engineering,
-              and product-oriented development.
-            </p>
-          </div>
-          <div class="resume-actions">
-            <a
-              class="button button-primary"
-              href="../assets/documents/satvik_kaul_resume.pdf"
-              download="satvik_kaul_resume.pdf"
-            >
-              Download Resume
-            </a>
-            <a
-              class="button button-secondary"
-              href="https://www.linkedin.com/in/satvik-kaul/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
-              class="button button-secondary"
-              href="https://github.com/satvikkaul"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-            <a class="button button-secondary" href="mailto:satvik.kaul@torontomu.ca">
-              Email
-            </a>
-          </div>
-        </section>
+    <main class="shell" id="top">
+      <section class="doc-head">
+        <div>
+          <h1>Resume</h1>
+          <p class="prose" style="margin-top: 1.2rem">
+            Machine learning and AI engineer building production Generative AI,
+            intelligent document processing, and agentic automation systems, alongside
+            self-supervised learning research in medical imaging.
+          </p>
+        </div>
+        <div class="doc-actions">
+          <a
+            class="btn btn-solid"
+            href="../assets/documents/satvik_kaul_resume.pdf"
+            download="satvik_kaul_resume.pdf"
+            >Download PDF</a
+          >
+          <a
+            class="btn btn-ghost"
+            href="https://www.linkedin.com/in/satvik-kaul/"
+            target="_blank"
+            rel="noreferrer"
+            >LinkedIn</a
+          >
+          <a class="btn btn-ghost" href="mailto:satvikkaul123@gmail.com">Email</a>
+        </div>
+      </section>
 
-        <section class="resume-section section">
-          <div class="resume-section-heading">
-            <p class="eyebrow">Summary</p>
-          </div>
-          <div class="resume-card compact-card">
-            <p>
-              MSc Computer Science student at Toronto Metropolitan University
-              building AI/ML and full-stack systems with practical value. Current
-              work spans medical imaging, self-supervised learning, resume
-              analysis, recommendation systems, and deployed application
-              development.
-            </p>
-          </div>
-        </section>
+      <section class="doc-section">
+        <h2>Experience</h2>
 
-        <section class="resume-section section">
-          <div class="resume-section-heading">
-            <p class="eyebrow">Education</p>
+        <article class="session">
+          <div class="session-when">Nov 2024 - Present</div>
+          <div>
+            <h3>Machine Learning and AI Engineer</h3>
+            <p class="session-org">Ampere Digital &middot; Remote</p>
+            <ul>
+              <li>
+                Built a production intelligent document processing pipeline using Claude
+                multimodal extraction and asynchronous Cloudflare Queues, reaching 88%
+                first-pass structured-field accuracy across 250+ aviation documents and
+                cutting review time from ~7 minutes to under 60 seconds.
+              </li>
+              <li>
+                Architected and deployed multi-model AI-agent workflows using RAG,
+                LangChain, and LangGraph for onboarding, document review, and operational
+                automation, reducing agent-turn latency ~40% while supporting 1,200+ guided
+                interactions per month.
+              </li>
+              <li>
+                Trained a decision-support classifier on ~3,000 labeled review decisions;
+                evaluated XGBoost, LightGBM, and CatBoost through MLflow and applied a
+                0.97-precision threshold to automate ~60% of extracted-field decisions while
+                routing uncertain cases to human review.
+              </li>
+              <li>
+                Built AI evaluation and monitoring workflows using LLM-as-judge,
+                OpenTelemetry, and Sentry to validate output quality and surface failures
+                before deployment.
+              </li>
+            </ul>
           </div>
-          <div class="resume-card compact-card">
-            <div class="resume-entry-header">
-              <div>
-                <h2>Toronto Metropolitan University</h2>
-                <p class="resume-role">MSc Computer Science</p>
-              </div>
-              <div class="resume-meta">
-                <p class="resume-dates">Expected Graduation: June 2027</p>
-                <p class="resume-dates">GPA: 4.22 / 4.33</p>
-              </div>
-            </div>
-            <p class="resume-detail-line">
-              Focus: AI/ML, medical imaging, backend systems, recommendation
-              systems, full-stack development
-            </p>
-          </div>
-        </section>
+        </article>
 
-        <section class="resume-section section">
-          <div class="resume-section-heading">
-            <p class="eyebrow">Experience</p>
+        <article class="session">
+          <div class="session-when">Sep 2025 - Present</div>
+          <div>
+            <h3>Research Assistant, Advanced AI Lab (AI&sup2;)</h3>
+            <p class="session-org">Toronto Metropolitan University</p>
+            <ul>
+              <li>
+                Built a secure end-to-end AI application with FastAPI and React for pathology
+                image upload, algorithm selection, analysis-job submission, and report
+                generation, with per-user isolation of uploaded data and results.
+              </li>
+              <li>
+                Designed a modular architecture for adding AI/ML algorithms and workflows
+                without redesigning the core application.
+              </li>
+              <li>
+                Evaluated AWS, Azure, and Google Cloud across 15 infrastructure
+                configurations for a HIPAA/PHIPA-aligned deployment, recommending AWS on
+                cost, regional availability, and compliance maturity.
+              </li>
+              <li>
+                Conducted self-supervised learning research using CAE, SimCLR, and MoCo v2
+                for four-class Gleason grading on SICAPv2, reaching 62.8% accuracy and 0.500
+                Cohen's kappa against a 47.6% / 0.341 supervised baseline. Shortlisted for a
+                conference, manuscript in preparation.
+              </li>
+            </ul>
           </div>
-          <div class="resume-list">
-            <article class="resume-card compact-card">
-              <div class="resume-entry-header">
-                <div>
-                  <h2>Graduate Researcher</h2>
-                  <p class="resume-role">Toronto Metropolitan University</p>
-                </div>
-                <p class="resume-dates">Feb 2026 - Present</p>
-              </div>
-              <ul class="resume-bullets">
-                <li>
-                  Developing self-supervised learning pipelines for 4-class
-                  Gleason grading on SICAPv2, including CAE, SimCLR, and ongoing
-                  extensions to MoCo v2 / BYOL.
-                </li>
-                <li>
-                  Tracking downstream performance with linear evaluation,
-                  fine-tuning, and cross-fold comparison; current CAE results
-                  outperform the supervised baseline.
-                </li>
-              </ul>
-            </article>
-            <article class="resume-card compact-card">
-              <div class="resume-entry-header">
-                <div>
-                  <h2>IT Analyst</h2>
-                  <p class="resume-role">Ministry of the Attorney General</p>
-                </div>
-                <p class="resume-dates">Jan 2024 - Oct 2024</p>
-              </div>
-              <ul class="resume-bullets">
-                <li>
-                  Led a 3-person Agile team to build and deploy a custom
-                  ticketing portal, improving workflow speed and reducing input
-                  errors.
-                </li>
-                <li>
-                  Supported live hearing operations by resolving recurring M365
-                  issues and improving reliability across 10+ hearing rooms.
-                </li>
-              </ul>
-            </article>
-            <article class="resume-card compact-card">
-              <div class="resume-entry-header">
-                <div>
-                  <h2>System Support Officer (Co-op)</h2>
-                  <p class="resume-role">Ministry of the Attorney General</p>
-                </div>
-                <p class="resume-dates">May 2021 - Aug 2021</p>
-              </div>
-              <ul class="resume-bullets">
-                <li>
-                  Contributed to the launch of a revamped website and intranet
-                  using Linux/Unix and WordPress.
-                </li>
-                <li>
-                  Built a SharePoint-based workflow that improved task tracking
-                  and reduced delays in the Accounts department.
-                </li>
-              </ul>
-            </article>
-          </div>
-        </section>
+        </article>
 
-        <section class="resume-section section">
-          <div class="resume-section-heading">
-            <p class="eyebrow">Research</p>
+        <article class="session">
+          <div class="session-when">Sep 2025 - Present</div>
+          <div>
+            <h3>Teaching Assistant</h3>
+            <p class="session-org">Toronto Metropolitan University</p>
+            <ul>
+              <li>
+                Supported labs, tutorials, and office hours for introductory programming
+                courses in C and Python, focused on debugging and algorithmic
+                problem-solving.
+              </li>
+              <li>
+                Graded weekly labs and assessments with rubric-aligned feedback, and built
+                marking scripts and sample solutions to keep standards consistent across the
+                teaching team.
+              </li>
+            </ul>
           </div>
-          <div class="resume-list">
-            <article class="resume-card compact-card">
-              <div class="resume-entry-header">
-                <div>
-                  <h2>Self-Supervised Learning for Gleason Grading</h2>
-                  <p class="resume-role">
-                    Explores self-supervised learning pipelines for patch-level
-                    Gleason grading using autoencoder SSL, SimCLR, and MoCo v2.
-                  </p>
-                </div>
-              </div>
-              <ul class="resume-bullets">
-                <li>Compares baseline supervised learning against three SSL approaches on SICAPv2 patches.</li>
-                <li>Focuses on limited labeled data, class imbalance, and downstream grading quality.</li>
-              </ul>
-            </article>
-            <article class="resume-card compact-card">
-              <div class="resume-entry-header">
-                <div>
-                  <h2>Masked Auto Encoder for Gleason Grading</h2>
-                  <p class="resume-role">
-                    Explores masked autoencoder pretraining and ViT fine-tuning
-                    for patch-level Gleason grading under class imbalance.
-                  </p>
-                </div>
-              </div>
-              <ul class="resume-bullets">
-                <li>Studies whether MAE improves representation quality before downstream grading.</li>
-                <li>Evaluates metrics such as QWK, Macro-F1, and confusion-matrix behavior.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
+        </article>
 
-        <section class="resume-section section">
-          <div class="resume-section-heading">
-            <p class="eyebrow">Technical Skills</p>
+        <article class="session">
+          <div class="session-when">Jan 2024 - Oct 2024</div>
+          <div>
+            <h3>IT Analyst</h3>
+            <p class="session-org">Ministry of the Attorney General</p>
+            <ul>
+              <li>
+                Led a three-person Agile team to translate legal and administrative
+                stakeholder requirements into a Power Apps workflow-automation solution,
+                improving process efficiency 25%, cutting input errors 15%, and improving
+                response time 20%.
+              </li>
+              <li>
+                Resolved recurring MS Teams and Outlook issues during live hearings, reducing
+                helpdesk escalations ~30% and improving session reliability across 10+
+                hearing rooms.
+              </li>
+              <li>
+                Developed and maintained 10+ training guides for new AV and M365 tools,
+                enabling rapid onboarding for adjudicators and tribunal staff.
+              </li>
+            </ul>
           </div>
-          <div class="resume-skills-grid">
-            <article class="resume-card compact-card">
-              <h2>Languages</h2>
-              <p class="resume-skill-line">Python, JavaScript, C, C++</p>
-            </article>
-            <article class="resume-card compact-card">
-              <h2>Frameworks / Tools</h2>
-              <p class="resume-skill-line">PyTorch, TensorFlow, FastAPI, React, Vite, Git</p>
-            </article>
-            <article class="resume-card compact-card">
-              <h2>Areas</h2>
-              <p class="resume-skill-line">
-                Self-supervised learning, computer vision, model evaluation,
-                backend systems, recommender systems
-              </p>
-            </article>
-          </div>
-        </section>
+        </article>
 
-        <section class="resume-section section">
-          <div class="resume-section-heading">
-            <p class="eyebrow">Selected Projects</p>
+        <article class="session">
+          <div class="session-when">May 2021 - Aug 2021</div>
+          <div>
+            <h3>System Support Officer (Co-op)</h3>
+            <p class="session-org">Ministry of the Attorney General</p>
+            <ul>
+              <li>
+                Contributed to the launch of the Ontario Land Tribunals' revamped website and
+                intranet using Linux/Unix and WordPress, improving content accessibility for
+                5,000+ monthly users.
+              </li>
+              <li>
+                Built a SharePoint-based workflow for the Accounts department, reducing task
+                completion delays 30%.
+              </li>
+              <li>
+                Compiled a database of all 444 Ontario municipalities to support
+                cross-functional project planning and external communications.
+              </li>
+            </ul>
           </div>
-          <div class="resume-list">
-            <article class="resume-card compact-card">
-              <h2>Smart Resume Analyzer</h2>
-              <p class="resume-role">
-                Scores resumes against job descriptions and suggests practical rewrites for stronger applications.
-              </p>
-            </article>
-            <article class="resume-card compact-card">
-              <h2>Self-Supervised Learning for Gleason Grading</h2>
-              <p class="resume-role">
-                Explores self-supervised learning approaches for patch-level Gleason grading, including autoencoder SSL, SimCLR, and MoCo v2.
-              </p>
-            </article>
-            <article class="resume-card compact-card">
-              <h2>NutriSnap AI Nutrition Assistant</h2>
-              <p class="resume-role">
-                Explores food recognition and recommendation-driven nutrition tracking through a lightweight product prototype.
-              </p>
-            </article>
-            <article class="resume-card compact-card">
-              <h2>Masked Auto Encoder for Gleason Grading</h2>
-              <p class="resume-role">
-                Explores masked autoencoder pretraining and ViT fine-tuning for patch-level Gleason grading under class imbalance.
-              </p>
-            </article>
+        </article>
+      </section>
+
+      <section class="doc-section">
+        <h2>Research</h2>
+
+        <article class="session">
+          <div class="session-when">Ongoing</div>
+          <div>
+            <h3>Self-Supervised Learning for Gleason Grading</h3>
+            <p class="session-org">SICAPv2 &middot; CAE, SimCLR, MoCo v2</p>
+            <ul>
+              <li>
+                Compares baseline supervised training against three self-supervised
+                strategies for patch-level four-class Gleason grading.
+              </li>
+              <li>
+                CAE reaches 62.8% accuracy and 0.500 Cohen's kappa against a 47.6% / 0.341
+                supervised baseline; the SimCLR baseline sits at 37.6% / 0.067.
+              </li>
+              <li>Shortlisted for a conference, with manuscript in preparation.</li>
+            </ul>
           </div>
-        </section>
+        </article>
 
-      </main>
+        <article class="session">
+          <div class="session-when">Ongoing</div>
+          <div>
+            <h3>Masked Autoencoder for Gleason Grading</h3>
+            <p class="session-org">SICAPv2 &middot; MAE + Vision Transformer</p>
+            <ul>
+              <li>
+                Studies whether masked autoencoder pretraining improves representation
+                quality before downstream grading.
+              </li>
+              <li>
+                Evaluates against QWK, Macro-F1, and confusion-matrix behaviour under class
+                imbalance.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
 
-      <footer class="site-footer">
-        <p><a href="../index.html">Back to portfolio</a></p>
-        <p>&copy; 2026 Satvik Kaul</p>
-      </footer>
-    </div>
-    <a class="floating-top-button" href="#top" aria-label="Back to top">↑</a>
+      <section class="doc-section">
+        <h2>Education</h2>
+        <div class="specs">
+          <div class="spec-row">
+            <span class="spec-key">MSc Computer Science</span>
+            <span class="spec-val">Toronto Metropolitan University<br />Sep 2025 - Aug 2026</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Graduate GPA</span>
+            <span class="spec-val">4.28 / 4.33</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">BSc Information Technology</span>
+            <span class="spec-val">Centennial College<br />Sep 2019 - Jun 2023</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Undergraduate GPA</span>
+            <span class="spec-val">3.8 / 4.0</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Technical skills</h2>
+        <div class="panel">
+          <div class="panel-grid" data-panel></div>
+        </div>
+      </section>
+
+      <section class="doc-section" style="border-bottom: 0">
+        <h2>Selected projects</h2>
+        <div data-project-list></div>
+      </section>
+    </main>
+
+    <footer class="shell foot">
+      <span><a href="../index.html">Back to portfolio</a></span>
+      <span>Satvik Kaul &middot; &copy; 2026</span>
+    </footer>
+
+    <a class="to-top" href="#top" aria-label="Back to top">&uarr;</a>
+
+    <script src="../assets/js/site-data.js"></script>
+    <script src="../assets/js/resume.js"></script>
   </body>
 </html>
